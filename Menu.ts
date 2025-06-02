@@ -29,6 +29,13 @@ export function mainMenu() {
         console.log("Por favor digite o numero da opção desejada ");
         option = read.questionInt("");
 
+         if (option == 9) {
+            console.log("\n            Agradecemos a preferencia            ");
+            console.log("\nBanco do Brazil com Z - O seu Futuro começa aqui!");
+            sobre();
+            process.exit(0);
+        }
+
         switch (option) {
             case 1:
                 console.log("\n\nCriar Conta\n\n");
@@ -62,14 +69,6 @@ export function mainMenu() {
                 console.log("\n\nTransferência entre Contas\n\n");
 
                 break;
-            case 9:
-                 console.log("\n                 Agradecemos a preferencia");
-                 console.log("\nBanco brazileiro do Brazil com Z - O seu Futuro começa aqui!");
-                 sobre()
-
-                 conti=false
-
-                break;
             default:
                 console.log("\nOpção Inválida!\n");
 
@@ -83,7 +82,7 @@ export function mainMenu() {
 export function sobre(): void { /* Função com os dados da pessoa desenvolvedora */
     console.log("\n*****************************************************");
     console.log("Projeto Desenvolvido por: Leticia Fontes ");
-    console.log("Generation Brasil - leticiaf@genstudents.org"); 
+    console.log("Generation Brasil - leticia.abib95@gmail.com"); 
     console.log("https://github.com/leticialafontes/conta_bancaria.git");
     console.log("*****************************************************");
 }
