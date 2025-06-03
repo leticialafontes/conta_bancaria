@@ -1,13 +1,22 @@
 import read from 'readline-sync'
+import { colors } from './src/util/Colors';
+import { Conta } from './src/model/Conta';
 
 export function mainMenu() {
 
     let option: number;
-    let conti = true
 
-    while (conti) {
+    const conta: Conta = new Conta(1, 123, 1, "Adriana", 10000); //teste para ver se a classe conta foi feita corretamente
+    conta.visualizar();
+    conta.sacar(10500);
+    conta.visualizar();
+    conta.depositar(5000);
+    conta.visualizar();
 
-        console.log("*****************************************************");
+    while (true) {
+
+        console.log(colors.bg.black, colors.fg.gray +
+            "*****************************************************");
         console.log("                                                     ");
         console.log("           BANCO BRAZILEIRO DO BRAZIL COM Z          ");
         console.log("                                                     ");
@@ -24,13 +33,14 @@ export function mainMenu() {
         console.log("            9 - Sair                                 ");
         console.log("                                                     ");
         console.log("*****************************************************");
-        console.log("                                                     ");
+        console.log("                                                     ", colors.reset);
 
         console.log("Por favor digite o numero da opção desejada ");
         option = read.questionInt("");
 
          if (option == 9) {
-            console.log("\n            Agradecemos a preferencia            ");
+            console.log(colors.fg.greenstrong,
+                "\n            Agradecemos a preferencia            ");
             console.log("\nBanco do Brazil com Z - O seu Futuro começa aqui!");
             sobre();
             process.exit(0);
@@ -38,39 +48,39 @@ export function mainMenu() {
 
         switch (option) {
             case 1:
-                console.log("\n\nCriar Conta\n\n");
+                console.log(colors.fg.whitestrong,"\n\nCriar Conta\n\n");
 
                 break;
             case 2:
-                console.log("\n\nListar todas as Contas\n\n");
+                console.log(colors.fg.whitestrong,"\n\nListar todas as Contas\n\n");
 
                 break;
             case 3:
-                console.log("\n\nConsultar dados da Conta - por número\n\n");
+                console.log(colors.fg.whitestrong, "\n\nConsultar dados da Conta - por número\n\n");
 
                 break;
             case 4:
-                console.log("\n\nAtualizar dados da Conta\n\n");
+                console.log(colors.fg.whitestrong,"\n\nAtualizar dados da Conta\n\n");
 
                 break;
             case 5:
-                console.log("\n\nApagar uma Conta\n\n");
+                console.log(colors.fg.whitestrong, "\n\nApagar uma Conta\n\n");
 
                 break;
             case 6:
-                console.log("\n\nSaque\n\n");
+                console.log(colors.fg.whitestrong,"\n\nSaque\n\n");
 
                 break;
             case 7:
-                console.log("\n\nDepósito\n\n");
+                console.log(colors.fg.whitestrong, "\n\nDepósito\n\n");
 
                 break;
             case 8:
-                console.log("\n\nTransferência entre Contas\n\n");
+                console.log(colors.fg.whitestrong, "\n\nTransferência entre Contas\n\n");
 
                 break;
             default:
-                console.log("\nOpção Inválida!\n");
+                console.log(colors.fg.whitestrong,"\nOpção Inválida!\n");
 
                 break;
         }
@@ -79,12 +89,18 @@ export function mainMenu() {
 }
 
 
-export function sobre(): void { /* Função com os dados da pessoa desenvolvedora */
+export function sobre(): void { /* Dados da pessoa desenvolvedora */
     console.log("\n*****************************************************");
     console.log("Projeto Desenvolvido por: Leticia Fontes ");
     console.log("Generation Brasil - leticia.abib95@gmail.com"); 
     console.log("https://github.com/leticialafontes/conta_bancaria.git");
     console.log("*****************************************************");
+}
+
+function keyPress(): void {
+    console.log(colors.reset, "");
+    console.log("\nPressione enter para continuar...");
+    read.prompt();
 }
 
 mainMenu();
